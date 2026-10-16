@@ -2,10 +2,40 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1d3d">
+<meta name="description" content="نظام إدارة مدرسة عبد السلام الذكي: طلاب، مدرسون، جدول، حضور، درجات، شهادات، مالية، إشعارات، ومساعد ذكي.">
 <title>نظام إدارة مدرسة عبد السلام</title>
-<meta http-equiv="refresh" content="0; url=public/">
-<script>location.replace('public/' + location.hash);</script>
+<link rel="icon" href="public/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="public/manifest.webmanifest">
+<link rel="stylesheet" href="public/css/fonts.css">
+<link rel="stylesheet" href="public/css/tokens.css">
+<link rel="stylesheet" href="public/css/base.css">
+<link rel="stylesheet" href="public/css/layout.css">
+<link rel="stylesheet" href="public/css/components.css">
+<link rel="stylesheet" href="public/css/pages.css">
+<link rel="stylesheet" href="public/css/sync.css">
+<link rel="stylesheet" href="public/css/print.css">
+<link rel="stylesheet" href="public/css/responsive.css">
 </head>
-<body><p>جارٍ فتح النظام… إن لم يتم التحويل <a href="public/">اضغط هنا</a>.</p></body>
+<body>
+<div id="app"><div class="boot"><div class="boot-card"><div class="spinner"></div><div class="muted">جارٍ تحميل نظام مدرسة عبد السلام...</div></div></div></div>
+<noscript>يحتاج النظام إلى تفعيل JavaScript في المتصفح.</noscript>
+<!-- نسخة من public/index.html تعمل من جذر المستودع (للعرض المباشر على GitHub Pages). الترتيب مهم: النواة ← البيانات ← الخدمات ← الواجهة ← الصفحات ← الإقلاع -->
+<script src="public/js/core/utils.js"></script>
+<script src="public/js/core/repo.js"></script>
+<script src="public/js/data/vault.js"></script>
+<script src="public/js/data/sync.js"></script>
+<script src="public/js/core/auth.js"></script>
+<script src="public/js/core/permissions.js"></script>
+<script src="public/js/services/domain.js"></script>
+<script src="public/js/ui/components.js"></script>
+<script src="public/js/data/seed.js"></script>
+<script src="public/js/smart/assistant.js"></script>
+<script src="public/js/pages/shell.js"></script>
+<script src="public/js/pages/academic.js"></script>
+<script src="public/js/pages/evaluation.js"></script>
+<script src="public/js/pages/admin.js"></script>
+<script src="public/js/main.js"></script>
+</body>
 </html>
