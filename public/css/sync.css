@@ -1,0 +1,8 @@
+/* Sync / mode indicators */
+.sync-chip{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap;background:var(--sunken);color:var(--ink-2)}
+.sync-chip.ok{background:var(--green-soft);color:var(--green)}
+.sync-chip.info{background:var(--blue-soft);color:var(--blue-ink)}
+.sync-chip.warn{background:var(--amber-soft);color:var(--amber)}
+.sync-chip.bad{background:var(--red-soft);color:var(--red)}
+.sync-chip.demo{background:var(--violet-soft);color:var(--violet)}
+@media (max-width:760px){.sync-chip .sync-t{display:none}.sync-chip{padding:0 8px}}

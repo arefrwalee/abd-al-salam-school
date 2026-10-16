@@ -1,0 +1,10 @@
+{
+  "name": "abd-al-salam-school",
+  "version": "3.1.0",
+  "description": "نظام إدارة مدرسة عبد السلام الذكي — HTML/CSS/JS + خادم Node.js آمن بدون حزم خارجية",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": { "node": ">=22.13" }
+}

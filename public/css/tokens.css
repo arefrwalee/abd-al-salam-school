@@ -1,0 +1,40 @@
+/* Layout: fixed navy rail on the right (RTL), light working canvas; identity = the school's red / green / blue triad */
+:root{
+  --bg:#f2f4f8; --surface:#ffffff; --surface-2:#f6f8fb; --sunken:#eceff5; --line:#e1e6ef; --line-2:#cdd5e2;
+  --ink:#14203a; --ink-2:#47536b; --ink-3:#77839a;
+  --blue:#1f4fd8; --blue-ink:#1a44bd; --blue-soft:#e7eeff; --primary:#1f4fd8; --on-primary:#ffffff;
+  --green:#13803b; --green-soft:#e2f4e7; --red:#c42b2b; --red-soft:#fcebea;
+  --amber:#a35a05; --amber-soft:#fdf1df; --violet:#5b4bc4; --violet-soft:#eeebfb;
+  --rail:#0f1d3d; --rail-2:#182c58; --rail-ink:#dce4f6; --rail-ink-2:#93a2c4;
+  --c1:#2f63e6; --c2:#1f9a4d; --c3:#d23a3a; --c4:#d18a12; --c5:#7684a3;
+  --shadow:0 1px 2px rgba(15,29,61,.06),0 6px 20px rgba(15,29,61,.06);
+  --shadow-lg:0 24px 60px rgba(15,29,61,.28);
+  --r-sm:8px; --r:12px; --r-lg:16px;
+  --f-display:'Reem Kufi','IBM Plex Sans Arabic',Tahoma,sans-serif;
+  --f-body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif;
+  --side-w:258px; --top-h:62px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1120; --surface:#121a2c; --surface-2:#172136; --sunken:#0e1527; --line:#223049; --line-2:#2f3f5e;
+    --ink:#e7ecf6; --ink-2:#a8b3c8; --ink-3:#7a879f;
+    --blue:#7ea5ff; --blue-ink:#9dbbff; --blue-soft:#1a2a4f; --primary:#3c6df0;
+    --green:#4cc27a; --green-soft:#12301f; --red:#f27272; --red-soft:#3a1818;
+    --amber:#f0a94a; --amber-soft:#36260f; --violet:#ab9ff6; --violet-soft:#26213f;
+    --rail:#080e1c; --rail-2:#14203d;
+    --c1:#5c8bff; --c2:#3fbf72; --c3:#ef6262; --c4:#e8a63b; --c5:#8d9ab5;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); --shadow-lg:0 24px 60px rgba(0,0,0,.55);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1120; --surface:#121a2c; --surface-2:#172136; --sunken:#0e1527; --line:#223049; --line-2:#2f3f5e;
+  --ink:#e7ecf6; --ink-2:#a8b3c8; --ink-3:#7a879f;
+  --blue:#7ea5ff; --blue-ink:#9dbbff; --blue-soft:#1a2a4f; --primary:#3c6df0;
+  --green:#4cc27a; --green-soft:#12301f; --red:#f27272; --red-soft:#3a1818;
+  --amber:#f0a94a; --amber-soft:#36260f; --violet:#ab9ff6; --violet-soft:#26213f;
+  --rail:#080e1c; --rail-2:#14203d;
+  --c1:#5c8bff; --c2:#3fbf72; --c3:#ef6262; --c4:#e8a63b; --c5:#8d9ab5;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); --shadow-lg:0 24px 60px rgba(0,0,0,.55);
+  color-scheme:dark;
+}

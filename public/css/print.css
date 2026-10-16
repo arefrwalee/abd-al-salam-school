@@ -1,0 +1,9 @@
+/* Print */
+#print-area{display:none}
+@media print{
+  body *{visibility:hidden}
+  #print-area,#print-area *{visibility:visible}
+  #print-area{display:block;position:absolute;inset:0;background:#fff}
+  .cert,.receipt{box-shadow:none;border-radius:0}
+  @page{size:A4;margin:10mm}
+}
