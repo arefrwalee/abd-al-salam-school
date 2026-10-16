@@ -18,6 +18,7 @@ window.addEventListener('hashchange', () => render());
 
 function render() {
   const [r, p] = parseHash();
+  if (!App.user && r === 'demo' && DEMO_LINKS[p] && (!isServer() || (Mode.public && Mode.public.demo && p !== 'admin'))) { demoAutoLogin(p); return; }
   if (!App.user) { if (r === 'verify') return renderPublicVerify(p); if (isServer() && Mode.public && Mode.public.needsSetup) return renderSetup(); return renderLogin(); }
   const u = App.user = Auth.current();
   if (!u) return renderLogin();
@@ -275,4 +276,14 @@ function renderSetup() {
     banner('ستُحفظ كل البيانات على هذا الخادم في قاعدة SQLite مشفّرة بمفتاح AES-256 في data/master.key. احتفظ بنسخة من هذا المفتاح في مكان آمن؛ بدونه لا يمكن قراءة البيانات.', '', 'lock'),
     form))));
   setTimeout(() => $('#setup-principal') && $('#setup-principal').focus(), 50);
+}
+
+/* ---------- Direct demo links: #demo-admin · #demo-teacher · #demo-student · #demo-parent ---------- */
+const DEMO_LINKS = { admin: 'admin', teacher: 'teacher1', student: 'student1', parent: 'parent1' };
+async function demoAutoLogin(role) {
+  ROOT().replaceChildren(h('div', { class: 'boot' }, h('div', { class: 'boot-card' }, h('div', { class: 'spinner' }), h('div', { class: 'muted' }, 'جارٍ الدخول بحساب ' + ROLE_LABEL[role] + ' التجريبي...'))));
+  const r = await Auth.login(DEMO_LINKS[role], DEMO_PW[role], false);
+  if (!r.ok) { history.replaceState(null, '', location.pathname); renderLogin(); toast.error(r.msg); return; }
+  App.user = r.user; history.replaceState(null, '', location.pathname + '#dashboard'); render();
+  toast.success('أهلًا ' + displayName(r.user) + ' — حساب ' + ROLE_LABEL[role] + ' تجريبي');
 }

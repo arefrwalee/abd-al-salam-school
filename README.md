@@ -1,10 +1,17 @@
 # نظام إدارة مدرسة عبد السلام الذكي
 **Abd Al-Salam Smart School Management System — الإصدار 3.1**
 
-🔗 **العرض المباشر (Live Demo):** https://arefrwalee.github.io/abd-al-salam-school/
-> يعمل العرض المباشر في «وضع العرض» ببيانات تجريبية في الذاكرة فقط، ولا يُحفظ فيه شيء. الحسابات التجريبية تظهر في صفحة الدخول.
+🔗 **العرض المباشر (Live Demo):**
 
-واجهة مكتوبة بـ HTML + CSS + JavaScript دون أي إطار عمل، مع خادم Node.js لا يحتاج أي حزمة خارجية. تُحفظ البيانات على خادم المدرسة في قاعدة SQLite مشفّرة، لا في LocalStorage.
+| الصفحة | الرابط |
+|---|---|
+| الصفحة الرئيسية (تسجيل الدخول) | https://arefrwalee.github.io/abd-al-salam-school/ |
+| الدخول مباشرة كمدير | https://arefrwalee.github.io/abd-al-salam-school/#demo-admin |
+| الدخول مباشرة كمدرس | https://arefrwalee.github.io/abd-al-salam-school/#demo-teacher |
+| الدخول مباشرة كطالب | https://arefrwalee.github.io/abd-al-salam-school/#demo-student |
+| الدخول مباشرة كولي أمر | https://arefrwalee.github.io/abd-al-salam-school/#demo-parent |
+
+> العرض المباشر يعمل ببيانات تجريبية في الذاكرة فقط، ولا يُحفظ فيه شيء.
 
 ---
 
