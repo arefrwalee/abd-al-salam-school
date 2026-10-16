@@ -1,10 +1,14 @@
 {
   "name": "abd-al-salam-school",
-  "version": "3.1.0",
-  "description": "نظام إدارة مدرسة عبد السلام الذكي — HTML/CSS/JS + خادم Node.js آمن بدون حزم خارجية",
+  "version": "4.0.0",
+  "description": "نظام إدارة مدرسة عبد السلام الذكي — واجهة React (Vite) + خادم Node.js آمن",
   "private": true,
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "dev": "npm --prefix client run dev",
+    "build": "npm --prefix client run build"
   },
-  "engines": { "node": ">=22.13" }
+  "engines": {
+    "node": ">=22.13"
+  }
 }

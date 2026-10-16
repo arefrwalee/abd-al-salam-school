@@ -5,7 +5,7 @@ const ROOT = path.resolve(__dirname, '..');
 
 module.exports = {
   ROOT,
-  PUBLIC_DIR: path.join(ROOT, 'public'),
+  PUBLIC_DIR: path.join(ROOT, 'web'),
   DATA_DIR: process.env.SCHOOL_DATA_DIR ? path.resolve(process.env.SCHOOL_DATA_DIR) : path.join(ROOT, 'data'),
   PORT: Number(process.env.PORT || 8080),
   HOST: process.env.HOST || '0.0.0.0',

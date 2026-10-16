@@ -1,5 +1,7 @@
 # نظام إدارة مدرسة عبد السلام الذكي
-**Abd Al-Salam Smart School Management System — الإصدار 3.1**
+**Abd Al-Salam Smart School Management System — الإصدار 4.0 (React + Node.js)**
+
+**التقنيات:** واجهة **React 18** مبنية بـ **Vite** · خادم **Node.js** (بدون حزم خارجية) · قاعدة **SQLite** مشفّرة AES-256-GCM.
 
 🔗 **العرض المباشر (Live Demo):**
 
@@ -17,7 +19,7 @@
 
 ## 1. التشغيل السريع
 
-**المتطلبات:** Node.js بالإصدار 22.13 أو أحدث، ويُنزَّل من nodejs.org. لا حاجة إلى `npm install`.
+**المتطلبات:** Node.js بالإصدار 22.13 أو أحدث، ويُنزَّل من nodejs.org. الواجهة مبنية مسبقًا في مجلد `web/`، لذلك لا حاجة إلى `npm install` لتشغيل النظام.
 
 ```bash
 # من داخل مجلد المشروع
@@ -99,32 +101,43 @@ SCHOOL_TLS_CERT=./192.168.1.20+1.pem SCHOOL_TLS_KEY=./192.168.1.20+1-key.pem nod
 ```
 abd-al-salam-school/
 ├── server/                    ← الخادم (Node.js فقط، بدون حزم)
-│   ├── server.js              التوجيه، واجهة API، الملفات الثابتة، التحديث الفوري (SSE)
+│   ├── server.js              التوجيه، واجهة API، خدمة واجهة React من web/، التحديث الفوري (SSE)
 │   ├── db.js                  SQLite + تشفير AES-256-GCM لكل سجل + الجلسات + النسخ
 │   ├── auth.js                scrypt، كلمات المرور المؤقتة، الكوكي
 │   ├── policy.js              الصلاحيات: ما يُقرأ وما يُكتب لكل دور
 │   └── config.js              الإعدادات
-├── public/                    ← الواجهة (HTML/CSS/JS بدون أطر عمل)
-│   ├── index.html  sw.js  manifest.webmanifest  icon.svg
-│   ├── css/                   tokens · base · layout · components · pages · sync · print · responsive
-│   └── js/
-│       ├── core/              utils · repo (المستودع والإعدادات) · auth · permissions
-│       ├── data/              sync (الوصلة مع الخادم) · vault (الخزنة المشفّرة) · seed (بيانات تجريبية)
-│       ├── services/          domain (قواعد العمل، الحسابات، الإنذار المبكر، الرؤى)
-│       ├── smart/             assistant (المساعد الذكي بالعربية)
-│       ├── ui/                components (الجداول، النوافذ، الرسوم، QR)
-│       ├── pages/             shell · academic · evaluation · admin
-│       └── main.js            الإقلاع واختيار الوضع
-├── data/                      ← يُنشأ تلقائيًا: school.db · master.key · backups/
+├── client/                    ← مصدر واجهة React (Vite)
+│   ├── index.html  vite.config.js  package.json
+│   ├── public/                sw.js · manifest.webmanifest · icon.svg
+│   └── src/
+│       ├── main.jsx  App.jsx  hooks.js     الإقلاع، اختيار الوضع، التوجيه وحماية الصفحات
+│       ├── components/        ui (بطاقات، رسوم SVG، QR) · DataTable · modals (نوافذ، نماذج، طباعة) · Layout
+│       ├── pages/             Auth · Academic · Evaluation · Finance · Admin
+│       ├── lib/               store (المستودع) · sync (الوصلة مع الخادم) · vault (الخزنة المشفّرة)
+│       │                      auth · permissions · domain (قواعد العمل والإنذار المبكر) · assistant · seed
+│       └── styles/            tokens · base · layout · components · pages · print · responsive + الخطوط
+├── web/                       ← ناتج البناء (يُولَّد بـ npm run build ويخدمه الخادم)
+├── index.html                 ← نسخة من web/index.html لتعمل صفحة GitHub Pages الرئيسية
+├── scripts/publish-root.mjs   يولّد index.html الجذري بعد البناء
+├── data/                      ← يُنشأ تلقائيًا: school.db · master.key · backups/ (لا يُرفع إلى GitHub)
 ├── start-windows.bat  start.sh  package.json  README.md
 ```
+
+### تطوير الواجهة (React)
+```bash
+cd client
+npm install          # مرة واحدة
+npm run dev          # http://localhost:5173 مع تمرير /api إلى الخادم على 8080
+npm run build        # يبني إلى ../web ويحدّث index.html الجذري
+```
+شغّل الخادم (`node server/server.js`) في نافذة أخرى أثناء التطوير.
 
 ### أوضاع التشغيل الثلاثة
 | الوضع | متى | أين تُحفظ البيانات |
 |---|---|---|
 | **الخادم** | عند الفتح من `http(s)://…` والخادم يعمل | على الخادم (مشفّرة)، مع نسخة مشفّرة على الجهاز |
 | **دون اتصال** | الخادم غير متاح وتوجد نسخة على الجهاز | الخزنة المشفّرة، ثم تُزامَن تلقائيًا |
-| **العرض** | فتح `index.html` مباشرة أو المعاينة | الذاكرة فقط، وتُحذف عند إغلاق الصفحة |
+| **العرض** | GitHub Pages أو أي استضافة ثابتة بدون خادم | الذاكرة فقط، وتُحذف عند إغلاق الصفحة |
 
 ---
 
